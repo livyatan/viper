@@ -8,3 +8,19 @@ ____   ____.__
 ```
 
 Zergling generator
+
+This is meant to be run as a docker container.
+
+To build the viper image:
+
+    make build
+
+and publish it to dockerhub:
+
+    make push
+
+to run it:
+
+    docker run -e COUCH=http://localhost:5984 kevinjqiu/viper
+
+and replace `http://localhost:5984` with the actual connection string of the data store (couchdb)

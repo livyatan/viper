@@ -45,11 +45,11 @@ module Leviathan
       click_on 'sign up'
 
       if page.has_text? "you are doing that too much"
-        raise abort('****Exception: Rate Limited****')
+        abort('****Exception: Rate Limited****')
       end
       if page.has_css? '.c-form-control-feedback-error'
         elem = page.find '.c-form-control-feedback-error'
-        raise abort("****Exception: #{elem['data-original-title']}****")
+        abort("****Exception: #{elem['data-original-title']}****")
       end
       doc = @db.save_doc(
         '_id'       => username,
