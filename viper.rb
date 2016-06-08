@@ -34,8 +34,8 @@ module Leviathan
       username = "#{Faker::Internet.user_name.tr('.', '_')}_#{SecureRandom.hex[0..4]}"
       password = Faker::Internet.password(10)
 
-      puts "username: #{username}"
-      puts "password: #{password}"
+      puts "****username: #{username}****"
+      puts "****password: #{password}****"
 
       visit '/'
       click_on 'Log in or sign up'
