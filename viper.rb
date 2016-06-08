@@ -45,11 +45,11 @@ module Leviathan
       click_on 'sign up'
 
       if page.has_text? "you are doing that too much"
-        raise RuntimeError, 'Rate Limited'
+        raise RuntimeError.new('****Exception: Rate Limited****')
       end
       if page.has_css? '.c-form-control-feedback-error'
         elem = page.find '.c-form-control-feedback-error'
-        raise RuntimeError, elem['data-original-title']
+        raise RuntimeError.new("****Exception: #{elem['data-original-title']}****")
       end
       doc = @db.save_doc(
         '_id'       => username,
@@ -57,6 +57,7 @@ module Leviathan
         'ptpwd'     => password,
         'createdAt' => Time.now.utc.iso8601)
       doc
+      puts "****ZERGLING HATCHED****"
     end
   end
 end
